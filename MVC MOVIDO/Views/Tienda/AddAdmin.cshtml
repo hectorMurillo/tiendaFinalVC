@@ -1,0 +1,21 @@
+﻿@model IEnumerable<ProyectoMoya.Models.Usuario>
+
+@{
+    ViewBag.Title = "AddAdmin";
+}
+
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-4 col-sm-offset-1">
+            <h2>@ViewBag.Title</h2>
+            <ul>
+                @foreach (var item in Model)
+                {
+                    <li>@Html.DisplayFor(modelItem => item.Email)</li>
+                }
+            </ul>
+        </div>
+    </div>
+</div>

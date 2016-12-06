@@ -1,0 +1,15 @@
+﻿@using ProyectoMoya.Models;
+@helper MuestraCategoria(List<Categoria> lista){
+@*Lo que quiero hacer es poner un foreach para sacar las categorias*@
+    foreach (var element in lista)
+    {
+        <div class="panel-group category-products" id="accordian">
+        <!--category-productsr-->
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4 class="panel-title"><a href="#">@element.Nombre</a></h4>
+           </div>
+           </div>
+          </div>
+     }
+}

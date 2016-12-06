@@ -1,0 +1,16 @@
+﻿@using ProyectoMoya.Models;
+@helper MuestraCategorias(List <Categoria> lista) {
+    <div class="panel-group category-products" id="accordian">
+        @foreach (var element in lista)
+        {
+            <div class="panel panel-default">
+                <div class="panel-heading" >
+                    <h4 class="panel-title"><a href="#">@element.Nombre</a></h4>
+                </div>
+            </div>
+        }
+    </div>
+    @helper MuestraCategorias() { 
+    <h1>EJEMPLO</h1>
+    }
+}

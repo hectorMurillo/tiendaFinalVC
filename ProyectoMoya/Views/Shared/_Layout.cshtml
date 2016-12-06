@@ -1,0 +1,224 @@
+﻿@using Microsoft.AspNet.Identity
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Home | VIMAHE</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <link rel="shortcut icon" href="~/~/images/ico/favicon.ico">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="~/~/images/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="~/~/images/ico/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="~/~/images/ico/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="~/~/images/ico/apple-touch-icon-57-precomposed.png">
+</head><!--/head-->
+
+<body>
+    <header id="header">
+        <!--header-->
+        <div class="header_top">
+            <!--header_top-->
+                
+        </div><!--/header_top-->
+
+        <div class="header-middle">
+            <!--header-middle-->
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-4">
+                        <div class="logo pull-left">
+                            <a href="@Url.Action("Index", "Tienda" )" class="active"><img src="https://sto2016verduzcov.blob.core.windows.net/imagenes/vimaheLogo.png" width="200px" height="100px"/></a>
+                          
+                        </div>
+                       
+                    </div>
+                    <div class="col-sm-8">
+                        <div class="shop-menu pull-right">
+                            <nav class="shift">
+                                <ul>
+                                    <li><a href="#"><i class="fa fa-star"></i> Wishlist</a></li>
+                                    <li><a href="checkout.html"><i class="fa fa-crosshairs"></i> Checkout</a></li>
+                                    <li><a href="cart.html"><i class="fa fa-shopping-cart"></i> Cart<span class="badge">4</span></a></li>
+                                    @if (Request.IsAuthenticated)
+                                    {
+                                        using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+                                        {
+                                            @Html.AntiForgeryToken()
+
+                                            <ul class="nav navbar-nav navbar-right">
+                                                <li><a href="@Url.Action("Index", "Manage" )"><i class="fa fa-user"></i> Account</a></li>
+                                                <li><a href="javascript:document.getElementById('logoutForm').submit()"><i class="fa fa-power-off"></i>Log off</a></li>
+                                            </ul>
+                                        }
+                                    }
+                                    else
+                                    {
+                                        <li><a href="@Url.Action("Login", "Account" )"><i class="fa fa-lock"></i>Login</a></li>
+                                    }
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div><!--/header-middle-->
+
+        <div class="header-bottom">
+            <!--header-bottom-->
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-9">
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                                <span class="sr-only">Toggle navigation</span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                        </div>
+                        <div class="mainmenu pull-left">
+                            <ul class="nav navbar-nav collapse navbar-collapse">
+                                <li><a href="@Url.Action("Index", "Tienda" )" class="active">Home</a></li>
+                                <li class="dropdown">
+                                    <a href="#">Shop<i class="fa fa-angle-down"></i></a>
+                                    <ul role="menu" class="sub-menu">
+                                        <li><a href="@Url.Action("Index","Products")">Products</a></li>
+                                        <li><a href="product-details.html">Product Details</a></li>
+                                        <li><a href="checkout.html">Checkout</a></li>
+                                        <li><a href="cart.html">Cart</a></li>
+                                        <li><a href="login.html">Login</a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="@Url.Action("contacto","Tienda")">Contacto</a></li>
+
+                                @if (User.IsInRole("superAdmin"))
+                                {
+                                    <li><a href="@Url.Action("Index","Admin")">Panel Administrador</a></li>
+                                }
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-sm-3">
+                        <div class="search_box pull-right">
+                            <input type="text" placeholder="Search" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div><!--/header-bottom-->
+    </header><!--/header-->
+
+    @RenderSection("Slider", required: false)
+
+    <section>
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-3">
+                    <div class="left-sidebar">
+                        <h2>Category</h2>
+                        <div class="panel-group category-products" id="accordian">
+                            @foreach (var category in ViewBag.Categories)
+                            {
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        <h4 class="panel-title">
+                                            <a data-toggle="collapse" data-parent="#accordian" href="#@category.Nombre">
+                                                <span class="badge pull-right"><i class="fa fa-plus"></i></span>
+                                                @category.Nombre
+                                            </a>
+                                        </h4>
+                                    </div>
+                                    <div id="@category.Nombre" class="panel-collapse collapse">
+                                        <div class="panel-body">
+                                            <ul>
+                                                <li><a href="@Url.RouteUrl("FilterByCategoria", new { categoria = category.Nombre ,subCategoria = "Camisas"})">Camisas</a></li>
+                                                <li><a href="@Url.RouteUrl("FilterByCategoria", new {  categoria = category.Nombre ,subCategoria = "Pantalones"})">Pantalones</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            }
+                        </div><!--/category-products-->
+
+                    </div>
+                </div>
+
+                <div class="col-sm-9 padding-right">
+                    @RenderBody()
+                </div>
+            </div>
+        </div>
+        <div class="common-modal modal fade" id="common-Modal1" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-content">
+                <ul class="list-inline item-details">
+                    <li><a href="http://themifycloud.com">ThemifyCloud</a></li>
+                    <li><a href="http://themescloud.org">ThemesCloud</a></li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <footer id="footer" style="margin-top:2%">
+        <!--Footer-->
+        
+
+        <div class="footer-widget">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-2">
+                        <div class="single-widget">
+                            <h2>Servicios</h2>
+                            <ul class="nav nav-pills nav-stacked">
+                                <li><a href="#">Contactanos</a></li>
+                                <li><a href="#">FAQ’s</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-sm-2">
+                        <div class="single-widget">
+                            <h2>Categorias</h2>
+                            <ul class="nav nav-pills nav-stacked">
+                                <li><a href="#">Hombres</a></li>
+                                <li><a href="#">Mujeres</a></li>
+                                <li><a href="#">Niños</a></li>
+                                <li><a href="#">Niñas</a></li>
+                                <li><a href="#">Oldies</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-sm-3 col-sm-offset-1 pull-right">
+                        <div class="single-widget">
+                            <h2>Suscribete a nuestro catalogo</h2>
+                            <form action="#" class="searchform">
+                                <input type="text" placeholder="Tu cuenta de Correo" />
+                                <button type="submit" class="btn btn-default"><i class="fa fa-arrow-circle-o-right"></i></button>
+                                <p>Obten nuestras ultimas novedades en <br />ropa y precios especiales</p>
+                            </form>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <div class="container">
+                <div class="row">
+                    <p class="pull-left">Copyright © 2016 VIMAHE® All rights reserved.</p>
+                    <p class="pull-right">Designed by <span><a target="_blank" href="#">VIMAHE Team</a></span></p>
+                </div>
+            </div>
+        </div>
+
+    </footer><!--/Footer-->
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+
+</body>
+</html>

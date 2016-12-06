@@ -1,0 +1,21 @@
+﻿@model IEnumerable<ProyectoMoya.Models.Category>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-4 col-sm-offset-1">
+            <h2>Categories</h2>
+            <ul>
+                @foreach (var item in Model)
+            {
+                    <li><h4>@item.Nombre</h4></li>
+                }
+            </ul>
+        </div>
+    </div>
+</div>
+

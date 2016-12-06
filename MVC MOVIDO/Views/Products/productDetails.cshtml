@@ -1,0 +1,146 @@
+﻿@model ProyectoMoya.Models.Product
+
+@{
+    ViewBag.Title = "ProductDetails";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-9 padding-right">
+            <div class="product-details">
+                <!--product-details-->
+                <div class="col-sm-5">
+                    <h2 class="title text-center">Product Image</h2>
+                    <div class="view-product">
+                        <img src="@Model.Imagen" alt="" />
+                    </div>
+                    <div id="similar-product" class="carousel slide" data-ride="carousel">
+                        <!-- Wrapper for slides -->
+                        <div class="carousel-inner">
+                            <div class="item">
+                                <a href=""><img src="@Model.Imagen" style="width:84px;height:84px;" alt=""></a>
+                                <a href=""><img src="@Model.Imagen" style="width:84px;height:84px;" alt=""></a>
+                                <a href=""><img src="@Model.Imagen" style="width:84px;height:84px;" alt=""></a>
+                            </div>
+                            <div class="item">
+                                <a href=""><img src="@Model.Imagen" style="width:84px;height:84px;" alt=""></a>
+                                <a href=""><img src="@Model.Imagen" style="width:84px;height:84px;" alt=""></a>
+                                <a href=""><img src="@Model.Imagen" style="width:84px;height:84px;" alt=""></a>
+                            </div>
+                            <div class="item active">
+                                <a href=""><img src="@Model.Imagen" style="width:84px;height:84px;" alt=""></a>
+                                <a href=""><img src="@Model.Imagen" style="width:84px;height:84px;" alt=""></a>
+                                <a href=""><img src="@Model.Imagen" style="width:84px;height:84px;" alt=""></a>
+                            </div>
+
+                        </div>
+
+                        <!-- Controls -->
+                        <a class="left item-control" href="#similar-product" data-slide="prev">
+                            <i class="fa fa-angle-left"></i>
+                        </a>
+                        <a class="right item-control" href="#similar-product" data-slide="next">
+                            <i class="fa fa-angle-right"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-sm-7">
+                    <h2 class="title text-center">Product Details</h2>
+                    <div class="product-information">
+                        <div class="row">
+                            <h2>Product Name:</h2>
+                            <p>@Model.Nombre</p>
+                        </div>
+                        <div class="row">
+                            <span>
+                                <span>US $@Model.Costo</span>
+                            </span>
+                        </div>
+                        <div class="row">
+                            <div class="price-box">
+                                <div class="price-slider">
+                                    <h4 class="great">Amount: <span id="showCantidad"></span></h4>
+                                    <div class="col-sm-12">
+                                        <div id="sliderCantidad"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <button type="button" class="btn btn-fefault cart">
+                                <i class="fa fa-shopping-cart"></i>
+                                Add to cart
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div><!--/product-details-->
+
+            <div class="category-tab shop-details-tab">
+                <!--category-tab-->
+                <div class="col-sm-12">
+                    <ul class="nav nav-tabs">
+                        <li class="active"><a href="#reviews" data-toggle="tab">Reviews (5)</a></li>
+                    </ul>
+                </div>
+                <div class="tab-content">
+                    <div class="tab-pane fade active in" id="reviews">
+                        <p><b>Write Your Review</b></p>
+
+                        <form action="#">
+                            <span>
+                                <input type="text" placeholder="Your Name" />
+                                <input type="email" placeholder="Email Address" />
+                            </span>
+                            <textarea name=""></textarea>
+                            <button type="button" class="btn btn-default pull-right">
+                                Submit
+                            </button>
+                        </form>
+
+                        <div class="container col-xs-11" style="margin-top:3%">
+                            <h2 class="title text-center">PRODUCT COMMENTS</h2>
+                            <div class="row">
+                                <div class="col-sm-2">
+                                    <div class="thumbnail">
+                                        <img class="img-responsive user-photo" src="https://ssl.gstatic.com/accounts/ui/avatar_2x.png">
+                                    </div><!-- /thumbnail -->
+                                </div><!-- /col-sm-1 -->
+                                <div class="col-sm-10">
+                                    <div class="panel panel-default">
+                                        <div class="panel-heading">
+                                            <strong>myusername</strong> <span class="text-muted">commented 5 days ago</span>
+                                        </div>
+                                        <div class="panel-body">
+                                            Panel content
+                                        </div><!-- /panel-body -->
+                                    </div><!-- /panel panel-default -->
+                                </div><!-- /col-sm-5 -->
+                            </div><!-- /row -->
+                            <div class="row">
+                                <div class="col-sm-2">
+                                    <div class="thumbnail">
+                                        <img class="img-responsive user-photo" src="https://ssl.gstatic.com/accounts/ui/avatar_2x.png">
+                                    </div><!-- /thumbnail -->
+                                </div><!-- /col-sm-1 -->
+                                <div class="col-sm-10">
+                                    <div class="panel panel-default">
+                                        <div class="panel-heading">
+                                            <strong>myusername</strong> <span class="text-muted">commented 5 days ago</span>
+                                        </div>
+                                        <div class="panel-body">
+                                            Panel content
+                                        </div><!-- /panel-body -->
+                                    </div><!-- /panel panel-default -->
+                                </div><!-- /col-sm-5 -->
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div><!--/category-tab-->
+
+        </div>
+    </div>
+</div>

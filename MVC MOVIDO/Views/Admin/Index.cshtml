@@ -1,0 +1,16 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-4 col-sm-offset-1">
+            <h2>Acciones</h2>
+            <a href="@Url.RouteUrl("CategoriesCreate")"><i class="glyphicon glyphicon-plus"></i> Agregar Categoria</a><br />
+            <a href="@Url.RouteUrl("ProductsCreate")"><i class="glyphicon glyphicon-plus"></i> Crear Producto</a><br />
+            <a href="@Url.RouteUrl("CategoriesIndex")"><i class="glyphicon glyphicon-search"></i> Ver Categories</a>
+        </div>
+    </div>
+</div>
