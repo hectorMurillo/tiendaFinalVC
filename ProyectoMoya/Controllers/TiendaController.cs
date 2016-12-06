@@ -3,6 +3,7 @@ using ProyectoMoya.Models;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -54,9 +55,7 @@ namespace ProyectoMoya.Controllers
                     Costo = p.Costo
                 }).ToList();
             return View(search);
-        }
-
-
+        }       
 
 
         /* mover al categoriescontroller

@@ -74,23 +74,21 @@
                                                         @Html.ValidationMessageFor(model => model.Imagen, "", new { @class = "text-danger" })
                                                     </div>
                                                 </div>
-                                                
-                                                <div class="form-group">
-                                                    @Html.LabelFor(model => model.Imagen2, htmlAttributes: new { @class = "control-label col-md-2" })
-                                                    <div class="col-md-10">
-                                                        <input type="file" name="imagen" class="form-control" id="imagen" />
-                                                        @Html.ValidationMessageFor(model => model.Imagen2, "", new { @class = "text-danger" })
-                                                    </div>
-                                                </div>
-
-                                                <div class="form-group">
-                                                    @Html.LabelFor(model => model.Imagen3, htmlAttributes: new { @class = "control-label col-md-2" })
-                                                    <div class="col-md-10">
-                                                        <input type="file" name="imagen" class="form-control" id="imagen" />
-                                                        @Html.ValidationMessageFor(model => model.Imagen3, "", new { @class = "text-danger" })
-                                                    </div>
-                                                </div>
-
+@*<div class="form-group">
+        @Html.LabelFor(model => model.Imagen2, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            <input type="file" name="imagen" class="form-control" id="imagen" />
+            @Html.ValidationMessageFor(model => model.Imagen2, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.Imagen3, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            <input type="file" name="imagen" class="form-control" id="imagen" />
+            @Html.ValidationMessageFor(model => model.Imagen3, "", new { @class = "text-danger" })
+        </div>
+    </div>
+*@
                                                 <div class="form-group">
                                                     <div class="col-md-offset-2 col-md-10">
                                                         <input type="submit" value="Create" onClick="return validar()" class="btn btn-danger" />

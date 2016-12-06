@@ -17,8 +17,7 @@ namespace ProyectoMoya.Models
         [Required]
         public double Costo { get; set; }
         [Required]
-        public string Imagen { get; set; }
-        [Required]
+        public string Imagen { get; set; }        
         public string Imagen2 { get; set; }        
         public string Imagen3 { get; set; }       
         public string Categoria { get; set; }

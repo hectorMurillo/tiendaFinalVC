@@ -60,17 +60,10 @@ namespace ProyectoMoya.Controllers
             }
             else
             {
-                url = imagenes.GuardarImagen("imagenestienda", imagen.FileName, imagen.InputStream);                              
-            }
-            if (imagen2 == null || string.IsNullOrWhiteSpace(imagen2.FileName))
-            {
-                ModelState.AddModelError("imagen2", "debe de subir archivo");
-            }
-            else
-            {
-                url2 = imagenes.GuardarImagen("imagenestienda", imagen2.FileName, imagen2.InputStream);
-            }
-
+                url = imagenes.GuardarImagen("imagenestienda", imagen.FileName, imagen.InputStream);
+               /* url2 = imagenes.GuardarImagen("imagenestienda", imagen2.FileName, imagen2.InputStream);
+                url3 = imagenes.GuardarImagen("imagenestienda", imagen3.FileName, imagen3.InputStream);*/
+            }            
             if (!ModelState.IsValid)
             {
                 return View(productoACrear);
@@ -78,8 +71,8 @@ namespace ProyectoMoya.Controllers
             try
             {
                 productoACrear.Imagen = url;
-                productoACrear.Imagen2 = url2;
-                //productoACrear.Imagen3 = url3;
+                /*productoACrear.Imagen2 = url2;
+                productoACrear.Imagen3 = url3;*/
                 productoACrear.Nombre = serializeNombre(productoACrear.Nombre);
                 productoACrear.Descripcion = serializeNombre(productoACrear.Descripcion);
 
